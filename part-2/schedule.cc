@@ -1,5 +1,9 @@
-// TODO: Add the required header
+// Isaac Flores
+// Iflores2027@csu.fullerton.edu
+// @IsaacFlores11
+// Partners: @Bryant-ZH
 
+#include <algorithm>
 #include <iostream>
 #include <string>
 
@@ -7,39 +11,38 @@
 // if the strings do not contain an 'e' at the same index
 // and false if the strings contain an 'e' at the same index.
 bool IsValid(const std::string& schedule1, const std::string& schedule2) {
-  // TODO: Declare a local variable of type Bool and initialize it with true
+  bool is_valid = true;
+  int max_length = std::min(schedule1.length(), schedule2.length());
 
-  // TODO: Consider a loop to examine each character at index i in
-  // both strings; if both strings have 'e' at the same index,
-  // then change the Bool variable to false
-  // Since the two strings may have different length, compare them
-  // index by index until one of them is finished
+  for (int i = 0; i < max_length; i++) {
+    if (schedule1[i] == 'e' && schedule2[i] == 'e') {
+      is_valid = false;
+      break;
+    }
+  }
 
-  // TODO: Return the local variable
-
-  // TODO: Remove the return statement below
-
-  return false;
+  return is_valid;  // You were missing this return statement.
 }
 
 int main(int argc, char const* argv[]) {
-  // TODO: Declare a variable to hold the first schedule
+  std::string schedule1;
+  std::string schedule2;
 
-  // TODO: print the prompt "Please enter the schedule of the Philosopher 1: "
-  // and request for input a number from standard input into the variable.
+  std::cout << "Please enter the schedule of Philosopher 1: ";
+  std::cin >> schedule1;
 
-  // TODO: Declare a variable to hold the first schedule
+  std::cout << "Please enter the Schedule of Philosopher 2: ";
+  std::cin >> schedule2;
 
-  // TODO: Print the prompt "Schedule of Philosopher 2: "
-  // and request for input a number from standard input into the variable.
+  bool is_valid_schedule = true;
 
-  // TODO: Declare a Boolean variable
+  is_valid_schedule = IsValid(schedule1, schedule2);
 
-  // TODO: Assign to the Boolean variable the value returned from
-  // a call to the IsValid function above.
+  if (is_valid_schedule) {
+    std::cout << "Valid schedule" << std::endl;
+  } else {
+    std::cout << "Invalid schedule" << std::endl;
+  }
 
-  // TODO If the variable above is true, print out "Valid schedule",
-  // else print out "Invalid schedule"
-  // then a newline character.
   return 0;
 }
